@@ -1,11 +1,9 @@
-FROM centos:latest
+FROM tomcat
 
-MAINTAINER Mateusz Chwalczuk
+MAINTAINER Chwalczuk
 
-RUN yum -y install httpd
+RUN apt-get update && apt-get -y upgrade
 
-COPY index.html /var/www/html/
+WORKDIR /usr/local/tomcat
 
-CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
-
-EXPOSE 80
+EXPOSE 8080
